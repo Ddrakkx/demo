@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>МІНІ КОНДИТЕРСЬКА — тістечка та десерти в Раківці</title>
+<meta name="description" content="Міні Кондитерська — домашні тістечка та десерти з натуральних продуктів. Кав'ярня. Раківка, Центр, Соборна 8/18.">
+<meta property="og:title" content="МІНІ КОНДИТЕРСЬКА">
+<meta property="og:description" content="Тістечка з натуральних продуктів, десерти з самого дитинства.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F4EAD7;
+  --milk: #FBF5E9;
+  --sand: #EBDFC7;
+  --paper: #FFFCF5;
+  --chocolate: #2D1B11;
+  --berry: #8B3A3A;
+  --berry-deep: #6B2A2A;
+  --caramel: #B8824E;
+  --gold: #C9A574;
+  --graphite: #1A120B;
+  --muted: #6B5847;
+  --border: rgba(45, 27, 17, 0.12);
+  --shadow-sm: 0 2px 8px rgba(45, 27, 17, 0.06);
+  --shadow-md: 0 12px 40px rgba(45, 27, 17, 0.10);
+  --shadow-lg: 0 24px 60px rgba(45, 27, 17, 0.18);
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--cream);
+  color: var(--graphite);
+  line-height: 1.6;
+  font-weight: 400;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(at 15% 0%, rgba(184, 130, 78, 0.10) 0px, transparent 50%),
+    radial-gradient(at 85% 100%, rgba(139, 58, 58, 0.06) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(201, 165, 116, 0.04) 0px, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+ul { list-style: none; }
+h1, h2, h3, h4 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 500;
+  color: var(--chocolate);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+}
+em { font-style: italic; color: var(--berry); font-weight: 400; }
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 20px 0;
+  transition: all 0.4s var(--ease);
+}
+.header.scrolled {
+  background: rgba(244, 234, 215, 0.88);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--chocolate);
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.logo-mark {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: var(--berry);
+  border-radius: 50%;
+  transform: translateY(-2px);
+}
+.logo-sub {
+  font-family: 'Manrope', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.nav { display: flex; gap: 36px; align-items: center; }
+.nav a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--chocolate);
+  position: relative;
+  padding: 4px 0;
+  transition: color 0.3s;
+}
+.nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background: var(--berry);
+  transition: width 0.3s var(--ease);
+}
+.nav a:hover { color: var(--berry); }
+.nav a:hover::after { width: 100%; }
+.header-cta { display: flex; align-items: center; gap: 18px; }
+.phone-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--chocolate);
+  transition: color 0.3s;
+}
+.phone-link:hover { color: var(--berry); }
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  background: var(--chocolate);
+  color: var(--milk);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: 100px;
+  transition: all 0.35s var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--berry);
+  transform: translateY(100%);
+  transition: transform 0.4s var(--ease);
+  z-index: 0;
+}
+.btn-primary:hover::before { transform: translateY(0); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(139, 58, 58, 0.30); }
+.btn-primary > * { position: relative; z-index: 1; }
+.btn-primary svg { transition: transform 0.3s; }
+.btn-primary:hover svg { transform: translateX(4px); }
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  background: transparent;
+  color: var(--chocolate);
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  transition: all 0.3s var(--ease);
+}
+.btn-secondary:hover {
+  border-color: var(--chocolate);
+  background: var(--paper);
+  transform: translateY(-2px);
+}
+.menu-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 1px solid var(--border);
+}
+.menu-toggle span {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: var(--chocolate);
+  position: relative;
+  transition: all 0.3s;
+}
+.menu-toggle span::before,
+.menu-toggle span::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 18px;
+  height: 1.5px;
+  background: var(--chocolate);
+  transition: all 0.3s;
+}
+.menu-toggle span::before { top: -6px; }
+.menu-toggle span::after { top: 6px; }
+.menu-toggle.open span { background: transparent; }
+.menu-toggle.open span::before { top: 0; transform: rotate(45deg); }
+.menu-toggle.open span::after { top: 0; transform: rotate(-45deg); }
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 85%;
+  max-width: 360px;
+  background: var(--milk);
+  z-index: 99;
+  padding: 100px 32px 40px;
+  transform: translateX(100%);
+  transition: transform 0.4s var(--ease);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.1);
+}
+.mobile-menu.open { transform: translateX(0); }
+.mobile-menu a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  color: var(--chocolate);
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+.mobile-menu a.btn-primary {
+  margin-top: 24px;
+  justify-content: center;
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  border: none;
+}
+.hero {
+  padding: 130px 0 70px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-deco {
+  position: absolute;
+  top: 10%;
+  right: -8%;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(184, 130, 78, 0.18), transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+  animation: float 8s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-20px, 20px) scale(1.05); }
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--berry);
+  margin-bottom: 28px;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--berry);
+}
+.hero h1 {
+  font-size: clamp(2.4rem, 6.5vw, 4.8rem);
+  font-weight: 500;
+  line-height: 1.02;
+  margin-bottom: 26px;
+  letter-spacing: -0.025em;
+}
+.hero-desc {
+  font-size: clamp(1rem, 1.4vw, 1.1rem);
+  color: var(--muted);
+  max-width: 520px;
+  margin-bottom: 36px;
+  line-height: 1.7;
+}
+.hero-cta-group {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 56px;
+}
+.hero-stats {
+  display: flex;
+  gap: 36px;
+  flex-wrap: wrap;
+  padding-top: 36px;
+  border-top: 1px solid var(--border);
+}
+.stat-item { display: flex; flex-direction: column; gap: 4px; }
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 4vw, 38px);
+  font-weight: 600;
+  color: var(--chocolate);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.hero-visual {
+  position: relative;
+  aspect-ratio: 5/4;
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--sand);
+  box-shadow: var(--shadow-lg);
+}
+.hero-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease);
+}
+.hero-visual:hover img { transform: scale(1.05); }
+.hero-visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(45, 27, 17, 0.35) 100%);
+  pointer-events: none;
+}
+.floating-card {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  background: rgba(255, 252, 245, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 16px 20px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+.floating-card-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--berry);
+  color: var(--milk);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.floating-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--chocolate);
+  line-height: 1.2;
+}
+.floating-card-sub {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+.showcase { padding: 80px 0; position: relative; }
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 56px;
+}
+.section-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--berry);
+  margin-bottom: 14px;
+  display: block;
+}
+.section-header h2 {
+  font-size: clamp(1.9rem, 4vw, 3.3rem);
+  font-weight: 500;
+  max-width: 620px;
+  line-height: 1.08;
+}
+.section-header-side {
+  color: var(--muted);
+  max-width: 360px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 44px;
+  flex-wrap: wrap;
+  padding: 6px;
+  background: var(--milk);
+  border-radius: 100px;
+  width: fit-content;
+  max-width: 100%;
+  border: 1px solid var(--border);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+  padding: 11px 22px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  border-radius: 100px;
+  transition: all 0.35s var(--ease);
+  white-space: nowrap;
+}
+.tab.active {
+  background: var(--chocolate);
+  color: var(--milk);
+  box-shadow: 0 4px 12px rgba(45, 27, 17, 0.2);
+}
+.tab:not(.active):hover { color: var(--chocolate); }
+.products-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.products-grid.fading { opacity: 0; transform: translateY(8px); }
+.product-card {
+  background: var(--paper);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.4s var(--ease);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: transparent;
+}
+.product-image {
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  position: relative;
+  background: var(--sand);
+}
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease);
+}
+.product-card:hover .product-image img { transform: scale(1.08); }
+.product-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(255, 252, 245, 0.95);
+  backdrop-filter: blur(8px);
+  padding: 6px 12px;
+  border-radius: 100px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--chocolate);
+}
+.product-body {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.product-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--chocolate);
+  line-height: 1.2;
+}
+.product-desc {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 20px;
+  line-height: 1.55;
+  flex: 1;
+}
+.product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+}
+.product-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--chocolate);
+}
+.product-price span {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+  margin-left: 2px;
+  letter-spacing: 0.02em;
+}
+.order-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 16px;
+  background: var(--cream);
+  color: var(--chocolate);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: 100px;
+  transition: all 0.3s var(--ease);
+  border: 1px solid var(--border);
+}
+.order-btn:hover {
+  background: var(--chocolate);
+  color: var(--milk);
+  border-color: var(--chocolate);
+}
+.order-btn svg { transition: transform 0.3s; }
+.order-btn:hover svg { transform: translateX(3px); }
+.showcase-cta {
+  text-align: center;
+  margin-top: 56px;
+  padding: 40px 24px;
+  background: var(--milk);
+  border-radius: 24px;
+  border: 1px solid var(--border);
+}
+.showcase-cta h3 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  margin-bottom: 10px;
+}
+.showcase-cta p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 24px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.about {
+  padding: 80px 0;
+  background: var(--milk);
+  position: relative;
+  overflow: hidden;
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.about-visual {
+  position: relative;
+  aspect-ratio: 1/1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 14px;
+}
+.about-img {
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--sand);
+}
+.about-img:nth-child(1) { grid-row: 1 / 3; }
+.about-img:nth-child(2) { grid-column: 2; grid-row: 1; }
+.about-img:nth-child(3) { grid-column: 2; grid-row: 2; }
+.about-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease);
+}
+.about-img:hover img { transform: scale(1.06); }
+.about-content h2 {
+  font-size: clamp(1.9rem, 4vw, 3.1rem);
+  margin-bottom: 22px;
+  line-height: 1.1;
+}
+.about-content > p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.75;
+  margin-bottom: 36px;
+}
+.features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.feature {
+  padding: 22px;
+  background: var(--paper);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  transition: all 0.35s var(--ease);
+}
+.feature:hover {
+  border-color: var(--berry);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-sm);
+}
+.feature-icon {
+  width: 42px;
+  height: 42px;
+  background: var(--cream);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--berry);
+  margin-bottom: 14px;
+}
+.feature-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--chocolate);
+  margin-bottom: 5px;
+  line-height: 1.2;
+}
+.feature-text {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+.locations { padding: 80px 0; }
+.locations-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+}
+.location-card {
+  background: var(--paper);
+  border-radius: 20px;
+  padding: 30px;
+  border: 1px solid var(--border);
+  transition: all 0.4s var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+.location-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--berry), var(--caramel));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease);
+}
+.location-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+.location-card:hover::before { transform: scaleX(1); }
+.location-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--berry);
+  margin-bottom: 12px;
+}
+.location-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--chocolate);
+  margin-bottom: 22px;
+  line-height: 1.1;
+}
+.location-info {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.info-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+.info-row svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--berry);
+}
+.info-row strong {
+  color: var(--chocolate);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 3px;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.location-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.location-actions a {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 100px;
+  transition: all 0.3s var(--ease);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.loc-link-primary {
+  background: var(--chocolate);
+  color: var(--milk);
+}
+.loc-link-primary:hover { background: var(--berry); transform: translateY(-2px); }
+.loc-link-secondary {
+  border: 1px solid var(--border);
+  color: var(--chocolate);
+}
+.loc-link-secondary:hover { border-color: var(--chocolate); background: var(--cream); }
+.footer {
+  background: var(--chocolate);
+  color: var(--milk);
+  padding: 72px 0 30px;
+  position: relative;
+  overflow: hidden;
+}
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--caramel), transparent);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  margin-bottom: 44px;
+}
+.footer-brand h3 {
+  color: var(--milk);
+  font-size: 30px;
+  margin-bottom: 12px;
+  letter-spacing: 0.05em;
+}
+.footer-brand p {
+  color: rgba(251, 245, 233, 0.65);
+  font-size: 14px;
+  max-width: 340px;
+  line-height: 1.75;
+}
+.footer-col h4 {
+  color: var(--milk);
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.footer-col ul { display: flex; flex-direction: column; gap: 10px; }
+.footer-col a, .footer-col li {
+  color: rgba(251, 245, 233, 0.65);
+  font-size: 14px;
+  transition: color 0.3s;
+}
+.footer-col a:hover { color: var(--caramel); }
+.footer-bottom {
+  padding-top: 30px;
+  border-top: 1px solid rgba(251, 245, 233, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 12px;
+  color: rgba(251, 245, 233, 0.5);
+}
+.social-links { display: flex; gap: 10px; }
+.social-links a {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(251, 245, 233, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(251, 245, 233, 0.7);
+  transition: all 0.3s var(--ease);
+}
+.social-links a:hover {
+  background: var(--caramel);
+  border-color: var(--caramel);
+  color: var(--chocolate);
+  transform: translateY(-2px);
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+@media (min-width: 640px) {
+  .products-grid { grid-template-columns: 1fr 1fr; }
+  .features { grid-template-columns: 1fr 1fr; }
+  .locations-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 2fr 1fr 1fr; gap: 48px; }
+}
+@media (min-width: 768px) {
+  .container { padding: 0 40px; }
+  .hero { padding: 150px 0 90px; }
+  .hero-grid { grid-template-columns: 1.05fr 0.95fr; gap: 64px; }
+  .hero-visual { aspect-ratio: 4/5; }
+  .about-grid { grid-template-columns: 1fr 1fr; gap: 72px; }
+  .showcase { padding: 100px 0; }
+  .about { padding: 100px 0; }
+  .locations { padding: 100px 0; }
+}
+@media (min-width: 1024px) {
+  .products-grid { grid-template-columns: repeat(3, 1fr); }
+  .locations-grid { grid-template-columns: repeat(3, 1fr); }
+  .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; }
+}
+@media (max-width: 900px) {
+  .nav, .phone-link, .header-cta .btn-primary { display: none; }
+  .menu-toggle { display: flex; }
+}
+@media (max-width: 480px) {
+  .container { padding: 0 20px; }
+  .hero { padding: 120px 0 60px; }
+  .hero-stats { gap: 24px; }
+  .features { grid-template-columns: 1fr; }
+  .floating-card { padding: 14px 16px; gap: 10px; }
+  .floating-card-icon { width: 36px; height: 36px; }
+  .floating-card-title { font-size: 15px; }
+  .floating-card-sub { font-size: 10px; }
+  .product-body { padding: 18px; }
+  .location-card { padding: 24px; }
+  .footer-bottom { justify-content: center; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+  .hero-deco { animation: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="#" class="logo" aria-label="Міні Кондитерська">
+        <span class="logo-mark"></span>
+        МІНІ
+        <span class="logo-sub">Кондитерська</span>
+      </a>
+      <nav class="nav" aria-label="Основна навігація">
+        <a href="#showcase">Вітрина</a>
+        <a href="#about">Про нас</a>
+        <a href="#locations">Локації</a>
+      </nav>
+      <div class="header-cta">
+        <a href="https://instagram.com/mini.kondyterska" class="phone-link">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          @mini.kondyterska
+        </a>
+        <a href="https://instagram.com/mini.kondyterska" class="btn-primary">
+          <span>Замовити</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Відкрити меню" aria-expanded="false">
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#showcase">Вітрина</a>
+  <a href="#about">Про нас</a>
+  <a href="#locations">Локації</a>
+  <a href="https://instagram.com/mini.kondyterska" class="btn-primary">
+    <span>Замовити</span>
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+  </a>
+</div>
+
+<section class="hero">
+  <div class="hero-deco"></div>
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content reveal">
+        <div class="hero-eyebrow">Кондитерська • Кав'ярня • Раківка</div>
+        <h1>Тістечка з натуральних продуктів — <em>десерти з самого дитинства</em></h1>
+        <p class="hero-desc">Домашня кондитерська з любов'ю та турботою про кожного. Натуральні продукти, затишна атмосфера, справжні десерти, які повертають у дитинство.</p>
+        <div class="hero-cta-group">
+          <a href="#showcase" class="btn-primary">
+            <span>Обрати десерт</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="#about" class="btn-secondary">Про нас</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-num" data-target="3" data-suffix="+">0</div>
+            <div class="stat-label">роки досвіду</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num" data-target="450" data-suffix="+">0</div>
+            <div class="stat-label">підписників</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">4.9</div>
+            <div class="stat-label">рейтинг</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual reveal">
+        <img src="https://loremflickr.com/800/1000/cake,elegant?lock=1" alt="Десерти Міні Кондитерська" loading="eager">
+        <div class="floating-card">
+          <div class="floating-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <div>
+            <div class="floating-card-title">З любов'ю та турботою</div>
+            <div class="floating-card-sub">Натуральні продукти • Домашній затишок</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="showcase" id="showcase">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <span class="section-eyebrow">Вітрина</span>
+        <h2>Наші <em>десерти</em></h2>
+      </div>
+      <p class="section-header-side">Обирайте категорію, щоб переглянути асортимент. Усі десерти готуються з натуральних продуктів.</p>
+    </div>
+
+    <div class="tabs reveal" id="tabs" role="tablist">
+      <button class="tab active" data-category="bento" role="tab" aria-selected="true">Бенто-торти</button>
+      <button class="tab" data-category="desserts" role="tab" aria-selected="false">Тістечка</button>
+      <button class="tab" data-category="drinks" role="tab" aria-selected="false">Кава</button>
+    </div>
+
+    <div class="products-grid" id="productsGrid"></div>
+
+    <div class="showcase-cta reveal">
+      <h3>Хочете щось особливе?</h3>
+      <p>Напишіть у Direct — зробимо десерт за вашим бажанням.</p>
+      <a href="https://instagram.com/mini.kondyterska" class="btn-primary">
+        <span>Написати в Instagram</span>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-img"><img src="https://loremflickr.com/600/800/pastry,chef?lock=2" alt="Кондитер" loading="lazy"></div>
+        <div class="about-img"><img src="https://loremflickr.com/500/400/cake,decoration?lock=3" alt="Декорування" loading="lazy"></div>
+        <div class="about-img"><img src="https://loremflickr.com/500/400/strawberries,dessert?lock=4" alt="Ягоди" loading="lazy"></div>
+      </div>
+      <div class="about-content reveal">
+        <span class="section-eyebrow">Про нас</span>
+        <h2>Кондитерська та кав'ярня <em>з домашнім теплом</em></h2>
+        <p>Міні Кондитерська — це місце, де тістечка готуються з натуральних продуктів, а десерти нагадують смак дитинства. Ми працюємо з любов'ю до кожної деталі, для нас важливо, щоб ви почувалися як вдома.</p>
+        <div class="features">
+          <div class="feature">
+            <div class="feature-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <div class="feature-title">З любов'ю</div>
+            <div class="feature-text">Кожен десерт готується з душею та турботою.</div>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            </div>
+            <div class="feature-title">Натуральні продукти</div>
+            <div class="feature-text">Лише якісні інгредієнти без замінників.</div>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <div class="feature-title">Домашній затишок</div>
+            <div class="feature-text">Затишна кав'ярня з теплою атмосферою.</div>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="feature-title">Смак дитинства</div>
+            <div class="feature-text">Десерти, які повертають у найкращі спогади.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="locations" id="locations">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <span class="section-eyebrow">Локації</span>
+        <h2>Знайдіть нас <em>у Раківці</em></h2>
+      </div>
+      <p class="section-header-side">Три точки, де можна скуштувати наші десерти та випити кави.</p>
+    </div>
+    <div class="locations-grid" id="locationsGrid"></div>
+  </div>
+</section>
+
+<footer class="footer" id="order">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>МІНІ КОНДИТЕРСЬКА</h3>
+        <p>Кондитерська та кав'ярня в Раківці. Тістечка з натуральних продуктів, десерти з самого дитинства, затишна атмосфера з любов'ю.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Навігація</h4>
+        <ul>
+          <li><a href="#showcase">Вітрина</a></li>
+          <li><a href="#about">Про нас</a></li>
+          <li><a href="#locations">Локації</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Контакти</h4>
+        <ul>
+          <li><a href="https://instagram.com/mini.kondyterska">Instagram</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Графік</h4>
+        <ul>
+          <li>Пн–Нд: 9:00 — 20:00</li>
+          <li>Замовлення — у Direct</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2024 Міні Кондитерська. Усі права захищені.</div>
+      <div class="social-links">
+        <a href="https://instagram.com/mini.kondyterska" aria-label="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const PRODUCTS = {
+  bento: [
+    { tag: 'Хіт', name: 'Бенто «Червоний оксамит»', desc: 'Вершковий мус, бісквіт червоного оксамиту, вишні.', price: '550', unit: '₴ / кг', img: 'https://loremflickr.com/600/450/cake,red?lock=5' },
+    { tag: 'Новинка', name: 'Бенто «Сира вишня»', desc: 'Ванільний бісквіт, вишневий конфі, крем-сир.', price: '520', unit: '₴ / кг', img: 'https://loremflickr.com/600/450/cake,cherry?lock=6' },
+    { tag: 'Класика', name: 'Бенто «Шоколадна мрія»', desc: 'Бельгійський шоколад, ніжний ганаш.', price: '580', unit: '₴ / кг', img: 'https://loremflickr.com/600/450/cake,chocolate?lock=7' },
+    { tag: 'Сезон', name: 'Бенто «Манго-маракуйя»', desc: 'Свіже манго, маракуйя, кокосові вершки.', price: '620', unit: '₴ / кг', img: 'https://loremflickr.com/600/450/cake,fruit?lock=8' }
+  ],
+  desserts: [
+    { tag: 'Хіт', name: 'Тістечко «Карпатка»', desc: 'Листкове тісто, заварний крем, ваніль.', price: '70', unit: '₴ / шт.', img: 'https://loremflickr.com/600/450/macarons?lock=14' },
+    { tag: 'Новинка', name: 'Наполеон', desc: 'Класичний листковий десерт з ніжним кремом.', price: '80', unit: '₴ / шт.', img: 'https://loremflickr.com/600/450/eclair?lock=15' },
+    { tag: 'Класика', name: 'Чізкейк «Нью-Йорк»', desc: 'На пісочній основі, з ягідним соусом сезону.', price: '90', unit: '₴ / шт.', img: 'https://loremflickr.com/600/450/cheesecake?lock=16' }
+  ],
+  drinks: [
+    { tag: 'Новинка', name: 'Кава Латте', desc: 'Класичний латте з ніжною молочною пінкою.', price: '45', unit: '₴ / чашка', img: 'https://loremflickr.com/600/450/coffee?lock=20' },
+    { tag: 'Хіт', name: 'Капучино', desc: 'Насичений смак у кожній чашці.', price: '40', unit: '₴ / чашка', img: 'https://loremflickr.com/600/450/coffee,latte?lock=21' },
+    { tag: 'Хіт', name: 'Кава з молоком', desc: 'М'яка та ароматна ранкова кава.', price: '35', unit: '₴ / чашка', img: 'https://loremflickr.com/600/450/coffee,cup?lock=22' }
+  ]
+};
+
+const LOCATIONS = [
+  { tag: 'Точка • Раківка', name: 'Міні Кондитерська', address: 'Соборна, 8/18', city: 'Раківка', hours: 'Пн–Нд: 9:00 — 20:00', phone: '', phoneRaw: '', mapLink: 'https://maps.google.com/?q=Соборна+8/18+Раківка' },
+  { tag: 'Точка • Центр', name: 'Міні Кондитерська', address: 'Центр (зупинка)', city: 'Раківка', hours: 'Пн–Нд: 9:00 — 20:00', phone: '', phoneRaw: '', mapLink: 'https://maps.google.com/?q=Раківка+центр' }
+];
+
+const grid = document.getElementById('productsGrid');
+
+function renderProducts(category) {
+  const items = PRODUCTS[category] || [];
+  grid.innerHTML = items.map(p => `
+    <article class="product-card">
+      <div class="product-image">
+        <img src="${p.img}" alt="${p.name}" loading="lazy">
+        <span class="product-tag">${p.tag}</span>
+      </div>
+      <div class="product-body">
+        <h3 class="product-name">${p.name}</h3>
+        <p class="product-desc">${p.desc}</p>
+        <div class="product-footer">
+          <div class="product-price">${p.price}<span> ${p.unit}</span></div>
+          <button class="order-btn" data-name="${p.name}" aria-label="Замовити ${p.name}">
+            Замовити
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+      </div>
+    </article>
+  `).join('');
+
+  grid.querySelectorAll('.order-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const name = btn.dataset.name;
+      const msg = encodeURIComponent(`Доброго дня! Хочу замовити: ${name}`);
+      window.open(`https://instagram.com/mini.kondyterska`, '_blank');
+    });
+  });
+}
+
+function renderLocations() {
+  const locGrid = document.getElementById('locationsGrid');
+  locGrid.innerHTML = LOCATIONS.map(l => `
+    <article class="location-card">
+      <span class="location-tag">${l.tag}</span>
+      <h3 class="location-name">${l.name}</h3>
+      <div class="location-info">
+        <div class="info-row">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><strong>Адреса</strong>${l.address}<br>${l.city}</div>
+        </div>
+        <div class="info-row">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <div><strong>Графік</strong>${l.hours}</div>
+        </div>
+      </div>
+      <div class="location-actions">
+        <a href="${l.mapLink}" target="_blank" rel="noopener" class="loc-link-primary">
+          Прокласти маршрут
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 10 20 15 15 20"/><line x1="4" y1="15" x2="20" y2="15"/></svg>
+        </a>
+      </div>
+    </article>
+  `).join('');
+}
+
+const tabs = document.querySelectorAll('.tab');
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    if (tab.classList.contains('active')) return;
+    tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected', 'true');
+    grid.classList.add('fading');
+    setTimeout(() => {
+      renderProducts(tab.dataset.category);
+      grid.classList.remove('fading');
+    }, 280);
+  });
+});
+
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 40) header.classList.add('scrolled');
+  else header.classList.remove('scrolled');
+}, { passive: true });
+
+const menuToggle = document.getElementById('menuToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+menuToggle.addEventListener('click', () => {
+  const open = menuToggle.classList.toggle('open');
+  mobileMenu.classList.toggle('open', open);
+  menuToggle.setAttribute('aria-expanded', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+mobileMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    menuToggle.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  });
+});
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    const target = parseInt(el.dataset.target, 10);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1400;
+    const start = performance.now();
+    function tick(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(eased * target) + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+      else el.textContent = target + suffix;
+    }
+    requestAnimationFrame(tick);
+    counterObserver.unobserve(el);
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+
+renderProducts('bento');
+renderLocations();
+</script>
+
+</body>
+</html>
