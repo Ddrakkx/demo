@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clothes Krem — оренда одягу | Кременчук</title>
+<meta name="description" content="Clothes Krem — стильний одяг на будь-який смак. Доставка по Україні. З вами на зв'язку @ilnchkphotos.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src='https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js'></script>
+<style>
+  :root {
+    --bg: #FAFAFA;
+    --paper: #FFFFFF;
+    --ink: #111111;
+    --ink-soft: #4A4A4A;
+    --ink-mute: #8A8A8A;
+    --accent: #E6DCC8;
+    --accent-deep: #D5C5B2;
+    --accent-soft: #F5F2EC;
+    --line: #E5E5E5;
+  }
+  * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Montserrat', system-ui, sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+  }
+  .font-serif { font-family: 'Playfair Display', Georgia, serif; }
+  .label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    font-size: 11px;
+  }
+  .display {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+
+  /* === ANTI-FOUC: HEADER === */
+  .header-main {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    background: rgba(250, 250, 250, 0.78);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(17, 17, 17, 0.06);
+  }
+  .header-inner {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header-logo { font-family: 'Playfair Display', serif; font-size: 18px; letter-spacing: 0.35em; color: #111; text-decoration: none; }
+  .header-nav { display: none; align-items: center; gap: 40px; }
+  .header-nav a { color: #4A4A4A; text-decoration: none; transition: color 0.3s; }
+  .header-nav a:hover { color: #111; }
+  .header-icons { display: flex; align-items: center; gap: 20px; color: #111; }
+  .header-icons a { color: inherit; text-decoration: none; transition: opacity 0.3s; font-size: 15px; }
+  .header-icons a:hover { opacity: 0.5; }
+  @media (min-width: 768px) {
+    .header-inner { padding: 20px 40px; }
+    .header-logo { font-size: 22px; }
+    .header-nav { display: flex; }
+    .header-icons a { font-size: 16px; }
+  }
+
+  /* === ANTI-FOUC: HERO === */
+  #hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 640px;
+    overflow: hidden;
+    background: #E6DCC8;
+  }
+  .tile-grid { position: absolute; inset: 0; perspective: 1400px; }
+  .hero-overlay {
+    position: absolute; inset: 0; z-index: 3; pointer-events: none;
+    background: linear-gradient(to top, rgba(17,17,17,0.65) 0%, rgba(17,17,17,0.20) 40%, rgba(17,17,17,0.10) 100%);
+  }
+  .hero-content {
+    position: relative; z-index: 10; height: 100%;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 0 20px 96px 20px;
+  }
+  .hero-inner { max-width: 1600px; margin: 0 auto; width: 100%; }
+  .hero-label { color: rgba(255,255,255,0.85); margin-bottom: 20px; }
+  #heroTitle {
+    color: #fff;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    max-width: 1200px;
+  }
+  #heroTitle em { font-style: italic; font-weight: 300; }
+  .hero-cta { margin-top: 32px; }
+  .hero-bottom-bar {
+    position: absolute; bottom: 0; left: 0; right: 0; z-index: 10;
+    border-top: 1px solid rgba(255,255,255,0.15);
+  }
+  .hero-bar-inner {
+    max-width: 1600px; margin: 0 auto; padding: 12px 20px;
+    display: flex; justify-content: space-between; align-items: center;
+    color: rgba(255,255,255,0.6);
+  }
+  .hero-scroll-cue { display: none; }
+  
+  @media (min-width: 640px) { #heroTitle { font-size: 44px; } }
+  @media (min-width: 768px) {
+    .hero-content { padding: 0 40px 80px 40px; }
+    #heroTitle { font-size: 56px; }
+    .hero-bar-inner { padding: 16px 40px; }
+    .hero-scroll-cue { display: flex; align-items: center; gap: 12px; }
+  }
+  @media (min-width: 1024px) { #heroTitle { font-size: 72px; } }
+  @media (min-width: 1280px) { #heroTitle { font-size: 80px; } }
+
+  /* Hero tile-flip cells */
+  .grid-cell {
+    position: absolute;
+    transform-origin: center top;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    opacity: 0;
+  }
+
+  /* Reveal */
+  .reveal {
+    opacity: 0; transform: translateY(36px);
+    transition: opacity 1100ms cubic-bezier(.22,1,.36,1),
+                transform 1100ms cubic-bezier(.22,1,.36,1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-in { opacity: 1; transform: none; }
+
+  /* Product card */
+  .product-img-wrap { overflow: hidden; position: relative; background: #F0EDE8; }
+  .product-img {
+    transition: transform 1.6s cubic-bezier(.16,1,.3,1);
+    will-change: transform;
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .product-card:hover .product-img { transform: scale(1.07); }
+  .product-overlay {
+    position: absolute; inset: 0;
+    background: rgba(17,17,17,0);
+    transition: background 600ms cubic-bezier(.16,1,.3,1);
+    pointer-events: none;
+  }
+  .product-card:hover .product-overlay { background: rgba(17,17,17,0.10); }
+
+  /* Tabs */
+  .tab-btn {
+    position: relative;
+    padding-bottom: 12px;
+    color: var(--ink-mute);
+    transition: color 400ms;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .tab-btn::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 1px;
+    background: var(--ink);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 500ms cubic-bezier(.16,1,.3,1);
+  }
+  .tab-btn.active { color: var(--ink); }
+  .tab-btn.active::after { transform: scaleX(1); }
+  .tab-btn:hover { color: var(--ink); }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; animation: fadeUp 800ms cubic-bezier(.22,1,.36,1); }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  /* Buttons */
+  .btn-primary {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--ink);
+    padding: 18px 42px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 500;
+    transition: background 400ms, border-color 400ms;
+    border: 1px solid var(--accent);
+    text-decoration: none;
+  }
+  .btn-primary:hover { background: var(--accent-deep); border-color: var(--accent-deep); }
+
+  .btn-dark {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--ink);
+    color: var(--bg);
+    padding: 20px 38px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 500;
+    transition: background 400ms, gap 400ms;
+    text-decoration: none;
+  }
+  .btn-dark:hover { background: #000; gap: 20px; }
+
+  .btn-order {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 14px 16px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--ink);
+    border: 1px solid var(--line);
+    transition: background 400ms, color 400ms, border-color 400ms;
+    text-decoration: none;
+    margin-top: 16px;
+  }
+  .btn-order:hover {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+  }
+
+  /* Hero text initial states */
+  #heroLabel, #heroTitle, #heroCta { opacity: 0; transform: translateY(30px); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .grid-cell { opacity: 1 !important; transform: none !important; }
+    #heroLabel, #heroTitle, #heroCta { opacity: 1; transform: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header-main">
+  <div class="header-inner">
+    <a href="#hero" class="header-logo">CLOTHES KREM</a>
+    <nav class="header-nav label">
+      <a href="#catalog">Каталог</a>
+      <a href="#info">Доставка</a>
+      <a href="#contacts">Контакти</a>
+    </nav>
+    <div class="header-icons">
+      <a href="https://instagram.com/clothes_krem" target="_blank" rel="noopener" aria-label="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="#catalog" aria-label="Кошик">
+        <i class="fa-solid fa-bag-shopping"></i>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="hero">
+  <div id="tileGrid" class="tile-grid"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <div class="hero-inner">
+      <p class="label hero-label" id="heroLabel">Кременчук · Оренда одягу</p>
+      <h1 id="heroTitle">
+        Стильний одяг —<br><em>на будь-який смак</em>
+      </h1>
+      <div class="hero-cta" id="heroCta">
+        <a href="#catalog" class="btn-primary">Нова колекція</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-bottom-bar">
+    <div class="hero-bar-inner label">
+      <span>Осінь — Зима 2024</span>
+      <span class="hero-scroll-cue">
+        <span style="width: 24px; height: 1px; background: rgba(255,255,255,0.4);"></span>
+        Горніть униз
+        <span style="width: 24px; height: 1px; background: rgba(255,255,255,0.4);"></span>
+      </span>
+      <span>EST. Кременчук</span>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="py-24 md:py-44 px-6 md:px-10">
+  <div class="max-w-3xl mx-auto text-center">
+    <p class="label text-[#8A8A8A] mb-8 reveal">— Філософія бренду</p>
+    <p class="display text-[24px] md:text-[40px] leading-[1.35] reveal">
+      «Стиль без зобов'язань —<br><em class="italic">обирай та носи</em>»
+    </p>
+    <div class="mt-12 w-12 h-px bg-[#D5C5B2] mx-auto reveal"></div>
+  </div>
+</section>
+
+<!-- CATALOG -->
+<section id="catalog" class="pb-20 md:pb-32 px-5 md:px-10" style="scroll-margin-top: 90px">
+  <div class="max-w-[1600px] mx-auto">
+
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-20 gap-8">
+      <div>
+        <p class="label text-[#8A8A8A] mb-5 reveal">Каталог</p>
+        <h2 class="display text-[40px] md:text-[72px] reveal">Обрані речі<br>сезону</h2>
+      </div>
+      <p class="max-w-sm text-[#4A4A4A] text-[15px] leading-[1.7] reveal">
+        Стильний одяг на будь-який смак. Доставка по Україні. З вами на зв'язку @ilnchkphotos.
+      </p>
+    </div>
+
+    <div class="flex gap-8 md:gap-14 mb-12 md:mb-16 border-b border-[#E5E5E5] reveal">
+      <button class="tab-btn active label" data-tab="dresses">Сукні</button>
+      <button class="tab-btn label" data-tab="suits">Костюми</button>
+      <button class="tab-btn label" data-tab="basics">База</button>
+    </div>
+
+    <!-- Panel: Dresses -->
+    <div class="tab-panel active" data-panel="dresses">
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
+
+        <article class="product-card">
+          <div class="product-img-wrap aspect-[3/4] mb-4">
+            <img class="product-img" src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80" alt="Сукня Лін" loading="lazy">
+            <div class="product-overlay"></div>
+          </div>
+          <div class="flex justify-between items-start gap-3">
+            <div>
+              <h3 class="font-serif text-[16px] md:text-[19px] leading-tight">Сукня «Лін»</h3>
+              <p class="text-[10px] text-[#8A8A8A] mt-2 tracking-[0.2em] uppercase">Пісочний · S—L</p>
+            </div>
+            <span class="text-[14px] font-medium whitespace-nowrap mt-1">1 450 ₴</span>
+          </div>
+          <a href="https://instagram.com/clothes_krem" target="_blank" class="btn-order">
+            Замовити <i class="fa-solid fa-arrow-right text-[9px]"></i>
+          </a>
+        </article>
+
+        <article class="product-card">
+          <div class="product-img-wrap aspect-[3/4] mb-4">
+            <img class="product-img" src="https://images.unsplash.com/photo-1496217590455-aa63f8359f68?auto=format&fit=crop&w=800&q=80" alt="Сукня Марі" loading="lazy">
+            <div class="product-overlay"></div>
+          </div>
+          <div class="flex justify-between items-start gap-3">
+            <div>
+              <h3 class="font-serif text-[16px] md:text-[19px] leading-tight">Сукня «Марі»</h3>
+              <p class="text-[10px] text-[#8A8A8A] mt-2 tracking-[0.2em] uppercase">Молочний · XS—M</p>
+            </div>
+            <span class="text-[14px] font-medium whitespace-nowrap mt-1">1 690 ₴</span>
+          </div>
+          <a href="https://instagram.com/clothes_krem" target="_blank" class="btn-order">
+            Замовити <i class="fa-solid fa-arrow-right text-[9px]"></i>
+          </a>
+        </article>
+
+        <article class="product-card">
+          <div class="product-img-wrap aspect-[3/4] mb-4">
+            <img class="product-img" src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=800&q=80" alt="Сукня Сіль" loading="lazy">
+            <div class="product-overlay"></div>
+          </div>
+          <div class="flex justify-between items-start gap-3">
+            <div>
+              <h3 class="font-serif text-[16px] md:text-[19px] leading-tight">Сукня «Сіль»</h3>
+              <p class="text-[10px] text-[#8A8A8A] mt-2 tracking-[0.2em] uppercase">Графіт · S—XL</p>
+            </div>
+            <span class="text-[14px] font-medium whitespace-nowrap mt-1">1 320 ₴</span>
+          </div>
+          <a href="https://instagram.com/clothes_krem" target="_blank" class="btn-order">
+            Замовити <i class="fa-solid fa-arrow-right text-[9px]"></i>
+          </a>
+        </article>
+
+        <article class="product-card">
+          <div class="product-img-wrap aspect-[3/4] mb-4">
+            <img class="product-img" src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80" alt="Сукня Ева" loading="lazy">
+            <div class="product-overlay"></div>
+          </div>
+          <div class="flex justify-between items-start gap-3">
+            <div>
+              <h3 class="font-serif text-[16px] md:text-[19px] leading-tight">Сукня «Ева»</h3>
+              <p class="text-[10px] text-[#8A8A8A] mt-2 tracking-[0.2em] uppercase">Бежевий · S—L</p>
+            </div>
+            <span class="text-[14px] font-medium whitespace-nowrap mt-1">1 890 ₴</span>
+          </div>
+          <a href="https://instagram.com/clothes_krem" target="_blank" class="btn-order">
+            Замовити <i class="fa-solid fa-arrow-right text-[9px]"></i>
+          </a>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- Panel: Suits -->
+    <div class="tab-panel" data-panel="suits">
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
+
+        <article class="product-card">
+          <div class="product-img-wrap aspect-[3/4] mb-4">
+            <img class="product-img" src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?auto=format&fit=crop&w=800&q=80" alt="Костюм Нор" loading="lazy">
+            <div class="product-overlay"></div>
+          </div>
+          <div class="flex justify-between items-start gap-3">
+            <div>
+              <h3 class="font-serif text-[16px] md:text-[19px] leading-tight">Костюм «Нор»</h3>
+              <p class="text-[10px] text-[#8A8A8A] mt-2 tracking-[0.2em] uppercase">Бежевий · S—L</p>
+            </div>
+            <span class="text-[14px] font-medium whitespace-nowrap mt-1">2 890 ₴</span>
+          </div>
+          <a href="https://instagram.com/clothes_krem" target="_blank" class="btn-order">
+            Замовити <i class="fa-solid fa-arrow-right text-[9px]"></i>
+          </a>
+        </article>
+
+        <article class="product-card">
+          <div class="product-img-wrap aspect-[3/4] mb-4">
+            <img class="product-img" src="https://images.unsplash.com/photo-1551803091-e20673f15770?auto=format&fit=crop&w=800&q=80" alt="Костюм Лео" loading="lazy">
+            <div class="product-overlay"></div>
+          </div>
+          <div class="flex justify-between items-start gap-3">
+            <div>
+              <h3 class="font-serif text-[16px] md:text-[19px] leading-tight">Костюм «Лео»</h3>
+              <p class="text-[10px] text-[#8A8A8A] mt-2 tracking-[0.2em] uppercase">Графіт · S—XL</p>
+            </div>
+            <span class="text-[14px] font-medium whitespace-nowrap mt-1">2 450 ₴</span>
+          </div>
+          <a href="https://instagram.com/clothes_krem" target="_blank" class="btn-order">
+            Замовити <i class="fa-solid fa-arrow-right text-[9px]"></i>
+          </a>
+        </article>
+
+        <article class="product-card">
+          <div class="product-img-wrap aspect-[3/4] mb-4">
+            <img class="product-img" src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80" alt="Костюм Мера" loading="lazy">
+            <div class="product-overlay"></div>
+          </div>
+          <div class="flex justify-between items-start gap-3">
+            <div>
+              <h3 class="font-serif text-[16px] md:text-[19px] leading-tight">Костюм «Мера»</h3>
+              <p class="text-[10px] text-[#8A8A8A] mt-2 tracking-[0.2em] uppercase">Пісочний · XS—M</p>
+            </div>
+            <span class="text-[14px] font-medium whitespace-nowrap mt-1">2 680 ₴</span>
+          </div>
+          <a href="https://instagram.com/clothes_krem" target="_blank" class="btn-order">
+            Замовити <i class="fa-solid fa-arrow-right text-[9px]"></i>
+          </a>
+        </article>
+
+        <article class="product-card">
+          <div class="product-img-wrap aspect-[3/4] mb-4">
+            <img class="product-img" src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?auto=format&fit=crop&w=800&q=80" alt="Костюм Вела" loading="lazy">
+            <div class="product-overlay"></div>
+          </div>
+          <div class="flex justify-between items-start gap-3">
+            <div>
+              <h3 class="font-serif text-[16px] md:text-[19px] leading-tight">Костюм «Вела»</h3>
+              <p class="text-[10px] text-[#8A8A8A] mt-2 tracking-[0.2em] uppercase">Молочний · S—L</p>
+            </div>
+            <span class="text-[14px] font-medium whitespace-nowrap mt-1">3 120 ₴</span>
+          </div>
+          <a href="https://instagram.com/clothes_krem" target="_blank" class="btn-order">
+            Замовити <i class="fa-solid fa-arrow-right text-[9px]"></i>
+          </a>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- Panel: Basics -->
+    <div class="tab-panel" data-panel="basics">
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
+
+        <article class="product-card">
+          <div class="product-img-wrap aspect-[3/4] mb-4">
+            <img class="product-img" src="https://images.unsplash.com/photo-1485462537746-965f33f7f6a7?auto=format&fit=crop&w=800&q=80" alt="Базовий топ" loading="lazy">
+            <div class="product-overlay"></div>
+          </div>
+          <div class="flex justify-between items-start gap-3">
+            <div>
+              <h3 class="font-serif text-[16px] md:text-[19px] leading-tight">Базовий топ</h3>
+              <p class="text-[10px] text-[#8A8A8A] mt-2 tracking-[0.2em] uppercase">Молочний · XS—L</p>
+            </div>
+            <span class="text-[14px] font-medium whitespace-nowrap mt-1">690 ₴</span>
+          </div>
+          <a href="https://instagram.com/clothes_krem" target="_blank" class="btn-order">
+            Замовити <i class="fa-solid fa-arrow-right text-[9px]"></i>
+          </a>
+        </article>
+
+        <article class="product-card">
+          <div class="product-img-wrap aspect-[3/4] mb-4">
+            <img class="product-img" src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80" alt="Прямі брюки" loading="lazy">
+            <div class="product-overlay"></div>
+          </div>
+          <div class="flex justify-between items-start gap-3">
+            <div>
+              <h3 class="font-serif text-[16px] md:text-[19px] leading-tight">Прямі брюки</h3>
+              <p class="text-[10px] text-[#8A8A8A] mt-2 tracking-[0.2em] uppercase">Графіт · S—XL</p>
+            </div>
+            <span class="text-[14px] font-medium whitespace-nowrap mt-1">1 190 ₴</span>
+          </div>
+          <a href="https://instagram.com/clothes_krem" target="_blank" class="btn-order">
+            Замовити <i class="fa-solid fa-arrow-right text-[9px]"></i>
+          </a>
+        </article>
+
+        <article class="product-card">
+          <div class="product-img-wrap aspect-[3/4] mb-4">
+            <img class="product-img" src="https://images.unsplash.com/photo-1485231183945-fffde7cc051e?auto=format&fit=crop&w=800&q=80" alt="Светр оверсайз" loading="lazy">
+            <div class="product-overlay"></div>
+          </div>
+          <div class="flex justify-between items-start gap-3">
+            <div>
+              <h3 class="font-serif text-[16px] md:text-[19px] leading-tight">Светр оверсайз</h3>
+              <p class="text-[10px] text-[#8A8A8A] mt-2 tracking-[0.2em] uppercase">Бежевий · S—L</p>
+            </div>
+            <span class="text-[14px] font-medium whitespace-nowrap mt-1">1 390 ₴</span>
+          </div>
+          <a href="https://instagram.com/clothes_krem" target="_blank" class="btn-order">
+            Замовити <i class="fa-solid fa-arrow-right text-[9px]"></i>
+          </a>
+        </article>
+
+        <article class="product-card">
+          <div class="product-img-wrap aspect-[3/4] mb-4">
+            <img class="product-img" src="https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?auto=format&fit=crop&w=800&q=80" alt="Спідниця міді" loading="lazy">
+            <div class="product-overlay"></div>
+          </div>
+          <div class="flex justify-between items-start gap-3">
+            <div>
+              <h3 class="font-serif text-[16px] md:text-[19px] leading-tight">Спідниця міді</h3>
+              <p class="text-[10px] text-[#8A8A8A] mt-2 tracking-[0.2em] uppercase">Пісочний · XS—M</p>
+            </div>
+            <span class="text-[14px] font-medium whitespace-nowrap mt-1">990 ₴</span>
+          </div>
+          <a href="https://instagram.com/clothes_krem" target="_blank" class="btn-order">
+            Замовити <i class="fa-solid fa-arrow-right text-[9px]"></i>
+          </a>
+        </article>
+
+      </div>
+    </div>
+
+    <div class="mt-16 md:mt-24 text-center reveal">
+      <p class="text-[#4A4A4A] text-[14px] mb-6">Повний каталог — у нашому Instagram</p>
+      <a href="https://instagram.com/clothes_krem" target="_blank" class="btn-dark">
+        <i class="fa-brands fa-instagram text-[14px]"></i>
+        Перейти в Instagram
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- INFO & SHIPPING -->
+<section id="info" class="py-20 md:py-32 px-5 md:px-10 bg-[#F5F2EC]" style="scroll-margin-top: 90px">
+  <div class="max-w-[1400px] mx-auto">
+    <div class="grid md:grid-cols-2 gap-12 md:gap-24 items-start">
+
+      <div>
+        <p class="label text-[#8A8A8A] mb-6 reveal">Доставка та інформація</p>
+        <h2 class="display text-[40px] md:text-[68px] leading-[1.05] reveal">
+          Доставимо<br>
+          по всій <em class="italic">Україні</em>
+        </h2>
+        <p class="text-[#4A4A4A] text-[15px] md:text-[16px] leading-[1.8] mt-8 max-w-md reveal">
+          Доставка Новою Поштою по всій Україні. З вами на зв'язку @ilnchkphotos — пишіть у Direct.
+        </p>
+        <div class="mt-10 reveal">
+          <a href="https://instagram.com/clothes_krem" target="_blank" class="btn-dark">
+            <i class="fa-brands fa-instagram text-[14px]"></i>
+            Написати в Direct
+          </a>
+        </div>
+      </div>
+
+      <div class="space-y-10 md:space-y-12 md:pt-4">
+        <div class="reveal">
+          <p class="label text-[#8A8A8A] mb-5">Графік роботи</p>
+          <div class="space-y-0">
+            <div class="flex justify-between items-baseline border-b border-[#D5C5B2]/50 py-3">
+              <span class="text-[#4A4A4A] text-[14px]">Понеділок — Неділя</span>
+              <span class="font-serif text-[18px] md:text-[20px]">за домовленістю</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <p class="label text-[#8A8A8A] mb-5">Доставка</p>
+          <div class="space-y-0">
+            <div class="flex justify-between items-baseline border-b border-[#D5C5B2]/50 py-3">
+              <span class="text-[#4A4A4A] text-[14px]">Нова Пошта</span>
+              <span class="font-serif text-[18px] md:text-[20px]">по Україні</span>
+            </div>
+            <div class="flex justify-between items-baseline border-b border-[#D5C5B2]/50 py-3">
+              <span class="text-[#4A4A4A] text-[14px]">Самовивіз</span>
+              <span class="font-serif text-[18px] md:text-[20px]">Кременчук</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <p class="label text-[#8A8A8A] mb-5">Контакти</p>
+          <p class="font-serif text-[20px] md:text-[24px] leading-[1.4]">
+            м. Кременчук (онлайн)<br>
+            @ilnchkphotos
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contacts" class="bg-[#111] text-[#FAFAFA] py-16 md:py-24 px-5 md:px-10" style="scroll-margin-top: 90px">
+  <div class="max-w-[1600px] mx-auto">
+
+    <div class="grid md:grid-cols-12 gap-10 md:gap-10 mb-16 md:mb-20">
+      <div class="md:col-span-5">
+        <p class="font-serif text-2xl md:text-3xl tracking-[0.35em] mb-5">CLOTHES KREM</p>
+        <p class="text-[#888] text-[14px] leading-[1.7] max-w-xs">
+          Стильний одяг на будь-який смак. Доставка по Україні.
+        </p>
+      </div>
+
+      <div class="md:col-span-3">
+        <p class="label text-[#666] mb-5">Адреса</p>
+        <p class="font-serif text-[17px] md:text-[18px] leading-[1.5]">
+          м. Кременчук
+        </p>
+      </div>
+
+      <div class="md:col-span-2">
+        <p class="label text-[#666] mb-5">Графік</p>
+        <p class="text-[13px] leading-[1.8] text-[#aaa]">
+          За домовленістю
+        </p>
+      </div>
+
+      <div class="md:col-span-2">
+        <p class="label text-[#666] mb-5">Соц. мережі</p>
+        <a href="https://instagram.com/clothes_krem" target="_blank" class="inline-flex items-center gap-3 text-[16px] md:text-[18px] font-serif border-b border-[#FAFAFA] pb-1 hover:gap-4 transition-all">
+          <i class="fa-brands fa-instagram text-[20px]"></i>
+          Instagram
+        </a>
+      </div>
+    </div>
+
+    <div class="border-t border-[#222] pt-10 md:pt-12 mb-10 md:mb-12 overflow-hidden">
+      <p class="font-serif text-[56px] md:text-[140px] lg:text-[200px] leading-[0.9] tracking-[0.04em] text-[#1a1a1a] select-none">
+        CLOTHES KREM
+      </p>
+    </div>
+
+    <div class="flex flex-col md:flex-row justify-between gap-4 text-[11px] text-[#666] tracking-[0.2em] uppercase">
+      <p>© 2024 Clothes Krem · Усі права захищені</p>
+      <p>Кременчук · Україна</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ===== Hero tile-flip =====
+  const grid = document.getElementById('tileGrid');
+  const rows = 6, cols = 8;
+  const beigeCells = [
+    {r:0,c:6},
+    {r:2,c:0},
+    {r:3,c:3},
+    {r:5,c:1}
+  ];
+  const heroImg = 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1920&q=85';
+
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      const isBeige = beigeCells.some(p => p.r===r && p.c===c);
+      const cell = document.createElement('div');
+      cell.className = 'grid-cell';
+      cell.style.left = (c/cols*100) + '%';
+      cell.style.top = (r/rows*100) + '%';
+      cell.style.width = (100/cols) + '%';
+      cell.style.height = (100/rows) + '%';
+      if (isBeige) {
+        cell.style.background = '#E6DCC8';
+      } else {
+        cell.style.backgroundImage = `url(${heroImg})`;
+        cell.style.backgroundPosition = `${c/(cols-1)*100}% ${r/(rows-1)*100}%`;
+        cell.style.backgroundSize = `${cols*100}% ${rows*100}%`;
+        cell.style.backgroundRepeat = 'no-repeat';
+      }
+      grid.appendChild(cell);
+    }
+  }
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReduced) {
+    gsap.set('.grid-cell', { rotateX: 90, y: -100, opacity: 0 });
+
+    gsap.to('.grid-cell', {
+      rotateX: 0, y: 0, opacity: 1,
+      duration: 1.4,
+      stagger: { each: 0.04, from: 'random' },
+      ease: 'expo.out',
+      delay: 0.3
+    });
+
+    gsap.to('#heroLabel', { opacity: 1, y: 0, duration: 1.1, ease: 'power3.out', delay: 1.2 });
+    gsap.to('#heroTitle', { opacity: 1, y: 0, duration: 1.4, ease: 'power3.out', delay: 1.4 });
+    gsap.to('#heroCta', { opacity: 1, y: 0, duration: 1.1, ease: 'power3.out', delay: 1.8 });
+  } else {
+    gsap.set('.grid-cell', { opacity: 1 });
+    gsap.set(['#heroLabel', '#heroTitle', '#heroCta'], { opacity: 1, y: 0 });
+  }
+
+  // ===== Tabs =====
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = btn.dataset.tab;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelector(`[data-panel="${tab}"]`).classList.add('active');
+    });
+  });
+
+  // ===== Reveal on scroll =====
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
